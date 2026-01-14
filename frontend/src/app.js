@@ -1,7 +1,7 @@
 import { Graph } from "./components/Graph.js";
 import { CockpitUI } from "./ui.js";
 
-fetch("data/Comparison_timeseries.json").then(r=>r.json()).then(json=>{
+fetch("..data/Comparison_timeseries.json").then(r=>r.json()).then(json=>{
 
   const groups = {};
   Object.keys(json.signals).forEach(n=>{
