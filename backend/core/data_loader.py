@@ -1,10 +1,19 @@
 import json
 from pathlib import Path
 
-DATA_PATH = Path("../data/ACDC_timeseries.json")
+# dossier backend/
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-with open(DATA_PATH, "r") as f:
+# Dashboard/data/ACDC_timeseries.json
+DATA_FILE = BASE_DIR.parent / "data" / "ACDC_timeseries.json"
+
+if not DATA_FILE.exists():
+    raise FileNotFoundError(
+        f"Fichier introuvable : {DATA_FILE}"
+    )
+
+with open(DATA_FILE, "r") as f:
     RAW = json.load(f)
 
-TIME = RAW["time"]
+TIME = [float(t) for t in RAW["time"]]
 SIGNALS = RAW["signals"]

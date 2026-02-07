@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List
 
-class SignalSeries(BaseModel):
+class SignalResponse(BaseModel):
     name: str
     time: List[float]
     values: List[float]

@@ -1,8 +1,11 @@
 from fastapi import APIRouter
 from core.data_loader import SIGNALS
 
-router = APIRouter(prefix="/variables")
+router = APIRouter(prefix="/variables", tags=["Variables"])
 
 @router.get("")
 def list_variables():
-    return sorted(SIGNALS.keys())
+    return {
+        "count": len(SIGNALS),
+        "variables": sorted(SIGNALS.keys())
+    }
